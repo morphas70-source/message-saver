@@ -1,4 +1,3 @@
-
 package com.messagesaver.app;
 
 import android.app.Activity;
@@ -14,8 +13,7 @@ import android.widget.ScrollView;
 public class MainActivity extends Activity {
 
     private LinearLayout layout;
-
-      private TextView messages;
+    private TextView messages;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,27 +42,25 @@ public class MainActivity extends Activity {
         refreshButton.setText("Saved Messages பார்க்க");
         refreshButton.setOnClickListener(v -> showMessages());
         layout.addView(refreshButton);
+
         messages = new TextView(this);
-messages.setTextSize(16);
-layout.addView(messages);
+        messages.setTextSize(16);
+        layout.addView(messages);
+
         setContentView(scroll);
         showMessages();
     }
 
-private void showMessages() {
-    SharedPreferences prefs =
-        getSharedPreferences("MessageSaver", MODE_PRIVATE);
+    private void showMessages() {
+        SharedPreferences prefs =
+            getSharedPreferences("MessageSaver", MODE_PRIVATE);
 
-    String data = prefs.getString("saved_notifications", "");
+        String data = prefs.getString("saved_notifications", "");
 
-    if (messages != null) {
-        messages.setText(data.isEmpty()
-            ? "இன்னும் notifications சேமிக்கப்படவில்லை."
-            : data);
+        if (messages != null) {
+            messages.setText(data.isEmpty()
+                ? "இன்னும் notifications சேமிக்கப்படவில்லை."
+                : data);
+        }
     }
 }
-
-
-
-}
-k
